@@ -1,113 +1,162 @@
-import Image from "next/image";
+import {
+  Wrapper,
+  Hero,
+  ImageMarquee,
+  Icons,
+  VerticalMarquee,
+} from '@/components';
+import { nextImport } from '@/utils/nextImport';
+
+const { Intro, IntroImages } = {
+  Intro: nextImport('Intro'),
+  IntroImages: nextImport('IntroImages'),
+};
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <Wrapper>
+      <div className='flex min-h-screen  items-end pt-nav-height p-inline'>
+        <Hero />
+        <div className='grid-inner h-fit lg:mb-8 z-[2] relative'>
+          <div className='col-span-full lg:col-span-6'>
+            <h1>
+              <span className='font-heading font-black uppercase inline-block text-secondary lg:text-[8vw] leading-none lg:leading-[0.86]'>
+                The
+              </span>
+              <span className='font-heading font-black uppercase inline-block text-secondary lg:text-[8vw] leading-none lg:leading-[0.86]'>
+                Enigma
+              </span>
+              <span className='font-heading font-black uppercase inline-block text-secondary lg:text-[8vw] leading-none lg:leading-[0.86]'>
+                Project
+              </span>
+            </h1>
+          </div>
+          <div className='lg:col-end-13 lg:col-start-9 col-span-full flex items-end'>
+            <p className='text-base text-foreground'>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+              facere nam, similique recusandae saepe maiores in amet temporibus
+              ea suscipit error dicta consectetur quas quibusdam et tempore
+              rerum voluptate, quis itaque, sunt deleniti fugit. Obcaecati!
+            </p>
+          </div>
         </div>
       </div>
+      <Intro />
+      <IntroImages />
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='grid-inner p-inline py-16 lg:pb-24 lg:pt-32 relative'>
+        <div className='lg:col-span-6 lg:col-start-1 col-span-full pb-16 lg:pb-24'>
+          <h1 className='lg:text-5xl text-secondary leading-[0.86] uppercase'>
+            We Capture the mysterious essence of Film
+          </h1>
+        </div>
+        <div className='lg:col-span-3 col-span-full lg:col-start-1'>
+          <div className='aspect-[133/133] lg:h-11 h-12 w-auto '>
+            <Icons.puzzlePieceOne />
+          </div>
+          <div>
+            <span className='font-heading text-2xl text-foreground block pt-2'>
+              Subheader
+            </span>
+            <p className='text-foreground font-medium text-base pt-12'>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Voluptate fuga ad accusamus error totam corporis quod repudiandae
+              consectetur, dolores earum!
+            </p>
+          </div>
+        </div>
+        <div className='lg:col-span-3 col-span-full lg:col-start-5'>
+          <div className='w-fit '>
+            <Icons.puzzlePieceThree className='aspect-[133/91.68] lg:h-10 h-12 w-auto' />
+          </div>
+          <div>
+            <span className='font-heading text-2xl text-foreground block pt-2'>
+              Subheader
+            </span>
+            <p className='text-foreground font-medium text-base pt-12'>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Voluptate fuga ad accusamus error totam corporis quod repudiandae
+              consectetur, dolores earum!
+            </p>
+          </div>
+        </div>
+        <div className='lg:col-span-3 col-span-6 lg:mt-16 lg:col-start-6'>
+          <div className='w-fit '>
+            <Icons.puzzlePieceTwo className='w-auto lg:h-12 h-12 aspect-[133/122.48] block' />{' '}
+          </div>
+          <div>
+            <span className='font-heading text-2xl text-foreground block pt-2'>
+              Subheader
+            </span>
+            <p className='text-foreground font-medium text-base pt-12'>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Voluptate fuga ad accusamus error totam corporis quod repudiandae
+              consectetur, dolores earum!
+            </p>
+          </div>
+        </div>
+        <div className='lg:col-span-3 col-span-6 lg:mt-16 lg:col-start-10'>
+          <div className='w-fit'>
+            <Icons.puzzlePieceFour className='w-auto lg:h-12 h-12 aspect-[132.99/109.68] block' />
+          </div>
+          <div>
+            <span className='font-heading text-2xl text-foreground block pt-2'>
+              Subheader
+            </span>
+            <p className='text-foreground font-medium text-base pt-12'>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Voluptate fuga ad accusamus error totam corporis quod repudiandae
+              consectetur, dolores earum!
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+      <div className='bg-secondary py-16 lg:py-32 p-inline grid-inner'>
+        <div className='col-start-1 col-span-full lg:col-span-5 overflow-hidden lg:h--[500]'>
+          <VerticalMarquee />
+        </div>
+        <div className='col-span-full lg:col-span-5 lg:col-start-8 lg:pb-48'>
+          <h1 className='lg:text-5xl text-black leading-[0.86] uppercase'>
+            Collaborating with Leading Brands
+          </h1>
+          <p className='text-base text-black lg:pt-16 pt-6'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+            aspernatur iusto nisi optio amet, culpa dignissimos reiciendis ea
+            qui vero numquam, rerum velit exercitationem quis praesentium
+            adipisci id cupiditate laudantium temporibus eveniet? Hic deserunt
+            unde nihil quisquam adipisci praesentium nesciunt, quidem delectus!
+            Veniam velit delectus animi, similique optio non. Similique
+            inventore consectetur obcaecati quia? Non?
           </p>
-        </a>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+        <div className='col-span-full lg:col-span-4 lg:col-start-1 lg:pt-24 py-16'>
+          <h1 className='lg:text-5xl text-black leading-[0.86] uppercase'>
+            Collaborating with Leading Brands
+          </h1>
+          <p className='text-base text-black lg:pt-16 pt-6'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+            aspernatur iusto nisi optio amet, culpa dignissimos reiciendis ea
+            qui vero numquam, rerum velit exercitationem quis praesentium
+            adipisci id cupiditate laudantium temporibus eveniet? Hic deserunt
+            unde nihil quisquam adipisci praesentium nesciunt, quidem delectus!
+            Veniam velit delectus animi, similique optio non. Similique
+            inventore consectetur obcaecati quia? Non?
           </p>
-        </a>
+          <div className='pt-10'>
+            <button className='ring-[1.5px] ring-black rounded-full px-3 py-1 hover:text-foreground hover:ring-foreground duration-200 ease-in-out'>
+              See More Projects
+            </button>
+          </div>
+        </div>
+        <div className='col-span-6 relative col-end-13'>
+          <div className='w-full h--[500]'>
+            <div className='aspect-[4/5] bg-blue-100  h--[360] w-auto  rounded-lg relative z-[2]'></div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+            <div className='aspect-[1] bg-orange-200 w--[340] h-auto rounded-lg z-[1] -translate-y-[60%] translate-x-3/4'></div>
+          </div>
+        </div>
       </div>
-    </main>
+    </Wrapper>
   );
 }

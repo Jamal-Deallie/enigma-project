@@ -2,32 +2,162 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+
+@layer base {
+  body {
+    @apply font-body;
   }
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+  :root {
+    /* colors */
+    --primary: 341 100% 55%;
+    --secondary: 341 100% 55%;
+    --tertiary: 189 53% 50%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    /* font */
+    --lh: calc(2px + 2ex + 2px);
+    --textOutline: hsl(0, 0%, 100%);
+    --strokeWidth: 0.1em;
+    /*grid*/
+    --perspective: 1000px;
+    --grid-item-ratio: 1.5;
+    --grid-width: 100%;
+    --grid-height: auto;
+    --grid-gap: 2vw;
+    --grid-columns: 4;
+    --grid-inner-scale: 1;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    --speed: 15;
+    --count: 10;
+    --scale: 1;
+    --inset: 0;
+    --outset: 0;
+
+    --origin-x: 0;
+  }
+  @media (min-width: 800px) {
+    :root {
+      --viewport-w: 1366;
+      --nav-height: 75;
+    }
+  }
+  @media (max-width: 799.9px) {
+    :root {
+      --viewport-w: 375;
+      --nav-height: 65;
+    }
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .title-md {
+    @apply text-base lg:text-lg font-body text-foreground;
+  }
+  .p-inline {
+    @apply px-4 lg:px-10;
+  }
+  .grid-inner {
+    @apply grid lg:grid-cols-12 gap-x-6 grid-cols-6;
+  }
+  .grid-block {
+    @apply grid lg:grid-cols-12 grid-cols-6;
+  }
+  .main-text {
+    @apply text-lg lg:text-xl font-body;
+  }
+  .text-error {
+    @apply text-red-500;
+  }
+  .content {
+    background: radial-gradient(transparent 90%, #000000 100%);
+  }
+  .bg-gradient {
+    background: linear-gradient(#000000 75%, rgba(78, 164, 210, 0) 100%);
+  }
+}
+
+.container {
+  resize: both;
+  overflow: hidden;
+  --buff: 2rem;
+	height: 100%;
+	width: 100%;
+	mask:
+		linear-gradient(transparent, hsl(341 100% 55%) var(--buff) calc(75% - var(--buff)), transparent),
+		linear-gradient(45deg, transparent, hsl(341 100% 55%) var(--buff) calc(100% - var(--buff)), transparent);
+	mask-composite: intersect;
+}
+
+.vertical-marquee {
+  width: 100%;
+  height: fit-content;
+  justify-items: center;
+  flex-direction: column;
+  gap: 0;
+
+}
+
+.marque-item {
+  height: 80%;
+  aspect-ratio: 4 / 3;
+  background: hsl(0 0% 90%);
+  border-radius: 6px;
+  font-size: clamp(2rem, 4vw + 1rem, 8rem);
+  display: grid;
+  place-items: center;
+  border: 1px solid hsl(0 0% 50%);
+  --duration: calc(var(--speed) * 1s);
+  --delay: calc(
+    (var(--duration) / var(--count)) * (var(--index, 0) - (var(--count) * 0.5))
+  );
+  --origin-x: calc(((var(--count) - var(--index)) + var(--inset, 0)) * 100%);
+  --origin-y: 0;
+  --destination-x:calc(calc((var(--index) + 1 + var(--outset, 0)) * -100%));
+  --destination-y: 0
+
+  animation: slide var(--duration) calc(var(--delay) - (var(--count) * 0.5s))
+    infinite linear paused;
+  translate: var(--origin-x) var(--origin-y);
+
+  background: hsl(0 0% 100%);
+  border: 1px solid hsl(0 0% 90%);
+  animation-play-state: running !important;
+}
+
+@keyframes slide {
+  100% {
+    translate: var(--destination-x) var(--destination-y);
   }
 }
